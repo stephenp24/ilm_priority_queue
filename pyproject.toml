@@ -1,0 +1,73 @@
+[tool.poetry]
+name = "ilm-priority-queue"
+version = "0.1.0"
+description = "Simple priority queue"
+authors = ["stephenp24 <putra.stephen@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{include = "priority_queue", from = "python"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^7.2.1"
+pytest-cov = "^4.0.0"
+pytest-html = "^3.2.0"
+mock = "^5.0.1"
+
+[tool.poetry.group.fmt.dependencies]
+black = "^23.1.0"
+mypy = "^0.991"
+isort = "^5.12.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+minversion = 6.0
+addopts = "-v --cov --cov-report=html --cov-report=xml --cov-report=term-missing --html=report.html --self-contained-html"
+testpaths = [
+    "tests", 
+]
+
+[tool.coverage.run]
+source = ["python"]
+
+[tool.coverage.report]
+fail_under = 85.0
+show_missing = false
+skip_covered = true
+skip_empty = true
+
+[tool.coverage.html]
+directory = "coveragehtml"
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+[tool.black.run]
+line-length = 100
+extend-exclude = ".*|poetry*"
+# include = "*.py"
+# We use preview style for formatting Black itself. If you
+# want stable formatting across releases, you should keep
+# this off.
+preview = true
+
+[tool.mypy]
+files = ["python"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 100
+skip_glob = [
+    ".*",
+    "poetry*",
+]
+extend_skip = [
+    ".git", 
+]
+skip_gitignore = true
