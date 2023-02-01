@@ -21,7 +21,7 @@ For more implementaion details visit [Technical docs](TECHNICAL.md)
   
   > git clone https://github.com/stephenp24/ilm_priority_queue.git
 
-- `cd` to the irtree dir
+- `cd` to the ilm_priority_queue dir
 
   > cd ilm_priority_queue
 
